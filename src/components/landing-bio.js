@@ -15,15 +15,21 @@ const OuterContainer = styled.div`
   height: 78vh;
 `
 
-const Description = styled.p`
+const SubTitle = styled.p`
   padding: 0;
   margin-bottom: 1rem;
   font-size: 1.4rem;
 `
 
-const NameHeader = styled.h1`
-  font-size: 3.5rem;
+const NameHeader = styled.h2`
+  font-size: 3rem;
   margin-bottom: 0;
+`
+
+const Desctiption = styled.p`
+  padding: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
 `
 
 const LandingBio = () => (
@@ -34,15 +40,17 @@ const LandingBio = () => (
           siteMetadata {
             title
             subtitle
+            description
           }
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <OuterContainer>
         <Container>
           <NameHeader>{data.site.siteMetadata.title}</NameHeader>
-          <Description>{data.site.siteMetadata.subtitle}</Description>
+          <SubTitle>{data.site.siteMetadata.subtitle}</SubTitle>
+          <Desctiption>{data.site.siteMetadata.description}</Desctiption>
         </Container>
       </OuterContainer>
     )}
