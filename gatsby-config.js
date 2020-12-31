@@ -36,6 +36,18 @@ module.exports = {
               showLineNumbers: true,
             },
           },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+          {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+              path: `${__dirname}/src/content`,
+            },
+          },
         ],
       },
     },
