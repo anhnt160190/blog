@@ -12,7 +12,7 @@ In this post I will introduce to you about Redis PubSub.
 ## Pubsub Architecture
 ![redis pubsub architecture](../images/redis-pubsub-architecture.png)
 
-The above image is Redis Pubsub Architecture. We have Sender and Receiver are client which connect to Redis Server. Receiver will subcribe one Topic. Sender publish message to Topic, Receiver will receive this message.
+The above image is Redis Pubsub Architecture. We have Sender and Receiver. They are client which connect to Redis Server. When Receiver subcribe one Topic then Sender publish message to Topic, Receiver will receive this message.
 
 ## Example
 
