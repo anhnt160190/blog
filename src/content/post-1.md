@@ -60,6 +60,8 @@ In this post version of grant is ```Vagrant 2.2.18``` and Virtual Box is ```6.1.
   end
   ```
 
+  You can read more [vagrant docs](https://www.vagrantup.com/docs) and some [tips and tricks](https://www.vagrantup.com/docs/vagrantfile/tips)
+
 4. Start VM with vagrant cli
 
   ```bash
