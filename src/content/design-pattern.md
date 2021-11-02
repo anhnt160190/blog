@@ -12,3 +12,4 @@ The Examples in this post will be present by Typescript.
 
 - [Factory](https://anhnt-blog.netlify.app/blog/design-pattern-factory-ts)
 - [Observer](https://anhnt-blog.netlify.app/blog/design-pattern-observer-ts)
+- [Template](https://anhnt-blog.netlify.app/blog/design-pattern-template-ts)
