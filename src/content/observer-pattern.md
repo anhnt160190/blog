@@ -1,7 +1,7 @@
 ---
 title: "Design Pattern Observer With Typescript"
 date: "2021-10-31"
-draft: false
+draft: true
 path: "/blog/design-pattern-observer-ts"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Design Pattern Factory With Typescript"
 date: "2021-10-30"
-draft: false
+draft: true
 path: "/blog/design-pattern-factory-ts"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Design Pattern Template With Typescript"
 date: "2021-11-02"
-draft: false
+draft: true
 path: "/blog/design-pattern-template-ts"
 ---
 
