@@ -248,3 +248,7 @@ dist
 ```bash
 npm publish
 ```
+
+7. Deploy to netlify
+
+Preview [site](https://hugo-rc.netlify.app/)
