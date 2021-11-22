@@ -1,7 +1,7 @@
 ---
 title: "My Ansible Note"
 date: "2021-11-11"
-draft: false
+draft: true
 path: "/blog/my-ansible-note"
 ---
 
