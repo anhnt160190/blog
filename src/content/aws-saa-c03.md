@@ -1,6 +1,6 @@
 ---
 title: "AWS SAA-C03 review"
-date: "2023-04-30"
+date: "2023-04-29"
 draft: false
 path: "/blog/aws-saa-c03"
 ---
