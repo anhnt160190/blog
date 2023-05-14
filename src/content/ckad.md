@@ -1,7 +1,7 @@
 ---
 title: "CKAD review"
 date: "2023-04-29"
-draft: false
+draft: true
 path: "/blog/ckad"
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Set up EKS with Terraform"
 date: "2021-11-22"
-draft: false
+draft: true
 path: "/blog/eks-terraform"
 ---
 

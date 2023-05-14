@@ -1,7 +1,7 @@
 ---
 title: "Set up 3 VMs ubuntu with vagrant"
 date: "2021-10-27"
-draft: false
+draft: true
 path: "/blog/setup-vm-with-vagrant"
 ---
 

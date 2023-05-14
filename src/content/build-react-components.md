@@ -1,7 +1,7 @@
 ---
 title: "Set up React components package"
 date: "2021-11-11"
-draft: false
+draft: true
 path: "/blog/build-react-components"
 ---
 
