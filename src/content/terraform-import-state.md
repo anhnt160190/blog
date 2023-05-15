@@ -9,7 +9,7 @@ path: "/blog/terraform-import-state"
 
 Như một ngày bình thường mình nhận task từ leader. Nhiệm vụ của mình là import 1 AWS cognito user được tạo bằng tay trên AWS console vào terraform để quản lý bằng IAC.
 
-Ban đầu mình nghĩ nó cũng chỉ là 1 case import khá là bình thường và mình vào [docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user) của terraform aws_cognito_user để xem.
+Ban đầu mình nghĩ nó cũng chỉ là 1 case import khá là bình thường và mình vào [docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cognito_user) của terraform `aws_cognito_user` để xem.
 
 Sau khi viết tf code mình thực hiện import state
 
