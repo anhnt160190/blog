@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
 	// Meta property, found in src/components/BaseHead.astro L:42
 	ogLocale: "en_GB",
 	// Used to construct the meta title property found in src/components/BaseHead.astro L:11, and webmanifest name found in astro.config.ts L:42
-	title: "Astro Theme Cactus",
+	title: "Hugo's Blog",
 	// ! Please remember to replace the following site property with your own domain, used in astro.config.ts
 	url: "https://anhnt-blog.netlify.app/",
 };
