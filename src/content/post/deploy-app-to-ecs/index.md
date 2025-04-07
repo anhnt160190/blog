@@ -24,3 +24,54 @@ Vì bên mình sử dụng Mongo Atlas để host MongoDB. Mình sẽ khởi t�
 Với các trường hợp bạn dùng SQL database, bạn có thể sử dụng RDS của AWS luôn.
 
 ## Triển khai
+
+Terraform folder structure:
+
+```bash
+.
+├── envs
+│   ├── dev
+│   │   ├── main.tf
+│   └── prod
+│       ├── main.tf
+├── modules
+│   ├── alb
+│   ├── bastion
+│   ├── ecs
+│   ├── network
+│   ├── rds
+│   └── vpc
+└── svc
+│   ├── api-service
+│   │   ├── dev
+│   │   │   ├── main.tf
+│   │   ├── staging
+│   │   │   ├── main.tf
+│   │   ├── prod
+│   │   │   ├── main.tf
+│   ├── web-socket
+│   │   ├── dev
+│   │   │   ├── main.tf
+│   │   ├── staging
+│   │   │   ├── main.tf
+│   │   ├── prod
+│   │   │   ├── main.tf
+│   ├── background-service
+│   │   ├── dev
+│   │   │   ├── main.tf
+│   │   ├── staging
+│   │   │   ├── main.tf
+│   │   ├── prod
+│   │   │   ├── main.tf
+```
+
+`modules`: share các terraform base modules
+
+`envs`: khởi tạo base cho từng môi trường
+
+`svc`: định nghĩa cho từng application/service`
+
+Bạn có thể xem chi tiết ở [đây](https://github.com/anhnt160190/terraform-ecs)
+
+Thứ tự release sẽ là
+envs -> svc
