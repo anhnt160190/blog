@@ -31,9 +31,15 @@ Terraform folder structure:
 .
 ├── envs
 │   ├── dev
+│   │   ├── .terraform-version
+│   │   ├── 0-vpc.tf
+│   │   ├── 1-acm.tf
+│   │   ├── 2-alb.tf
+│   │   ├── 3-ecs.tf
+│   │   ├── locals.tf
 │   │   ├── main.tf
+│   └── staging
 │   └── prod
-│       ├── main.tf
 ├── modules
 │   ├── alb
 │   ├── bastion
@@ -42,36 +48,49 @@ Terraform folder structure:
 │   ├── rds
 │   └── vpc
 └── svc
-│   ├── api-service
+│   ├── api-users
+│   │   ├── base
 │   │   ├── dev
+│   │   │   ├── .terraform-version
+│   │   │   ├── locals.tf
 │   │   │   ├── main.tf
 │   │   ├── staging
-│   │   │   ├── main.tf
 │   │   ├── prod
-│   │   │   ├── main.tf
 │   ├── web-socket
+│   │   ├── base
 │   │   ├── dev
-│   │   │   ├── main.tf
 │   │   ├── staging
-│   │   │   ├── main.tf
 │   │   ├── prod
-│   │   │   ├── main.tf
-│   ├── background-service
+│   ├── web-admin
+│   │   ├── base
 │   │   ├── dev
-│   │   │   ├── main.tf
 │   │   ├── staging
-│   │   │   ├── main.tf
 │   │   ├── prod
-│   │   │   ├── main.tf
 ```
 
 `modules`: share các terraform base modules
 
 `envs`: khởi tạo base cho từng môi trường
 
-`svc`: định nghĩa cho từng application/service`
+`svc`: định nghĩa cho từng application/service
 
-Bạn có thể xem chi tiết ở [đây](https://github.com/anhnt160190/terraform-ecs)
+Bạn có thể xem chi tiết ở [đây](https://github.com/anhnt160190/ecs-terraform-example)
 
-Thứ tự release sẽ là
-envs -> svc
+Để quản lý terraform state. Trước tiên ta cần khởi tạo 1 s3 bucket để lưu trữ terraform state.
+Bước này không thể làm với terraform. Bạn có thể tạo trực tiếp trên console hoặc dùng cloudformation
+
+với folder `envs`: đây là folder để khởi tạo các base services.
+
+cấu trúc folder gồm có:
+
+- .terraform-version: quản lý terraform version
+- {index}-service.tf: mình dùng prefix index trước các service để đánh dấu thứ tự release ở lần release đầu tiên
+- locals.tf: quản lý các local variable cho từng môi trường
+- main.tf: khai báo provider và terraform backend
+
+với folder `svc`: đây là folder để khởi tạo các application/service trong hệ thống
+
+Cấu trúc folder gồm có
+
+- base: khởi tạo các phần chung giống nhau giữa các môi trường
+- dev/staging/prod: extends từ base và mở rộng theo môi trường
