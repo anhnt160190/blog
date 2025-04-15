@@ -20,7 +20,7 @@ Trong bài post này mình chia sẻ về các bước để triển khai micro 
 
 ## Triển khai
 
-### web-admin
+### init web-admin
 
 ```bash
 # init by vite
@@ -34,4 +34,28 @@ npm install tailwindcss @tailwindcss/vite
 npm install @originjs/vite-plugin-federation
 # install react-router(V7)
 npm install react-router
+```
+
+Xem chi tiết init web-admin ở [đây](https://github.com/anhnt160190/mfe-example/commit/ab9a4cd05fb40e5141db341197f5c7035286bf28)
+
+### init remote mfe-web-auth
+
+```bash
+# init by vite
+npm create vite@latest mfe-web-auth -- --template react-ts
+cd mfe-web-auth
+# install dependencies
+npm install
+# install vite-plugin-federation
+npm install @originjs/vite-plugin-federation
+# install concurrently
+npm install -D concurrently
+```
+
+Update `package.json` `scripts`
+
+```json
+"dev:watch": "vite build --watch",
+"serve": "vite preview --port=4001",
+"dev": "concurrently \"npm run dev:watch\" \"npm run serve\""
 ```
