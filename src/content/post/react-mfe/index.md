@@ -19,3 +19,19 @@ FE leader đưa ra quyết định ứng dụng micro frontend để giải quy�
 Trong bài post này mình chia sẻ về các bước để triển khai micro frontend với Vite/React/TaildwindCSS.
 
 ## Triển khai
+
+### web-admin
+
+```bash
+# init by vite
+npm create vite@latest web-admin -- --template react-ts
+cd web-admin
+# install dependencies
+npm install
+# install tailwindcss(V4)
+npm install tailwindcss @tailwindcss/vite
+# install vite-plugin-federation
+npm install @originjs/vite-plugin-federation
+# install react-router(V7)
+npm install react-router
+```
