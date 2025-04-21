@@ -59,3 +59,50 @@ Update `package.json` `scripts`
 "serve": "vite preview --port=4001",
 "dev": "concurrently \"npm run dev:watch\" \"npm run serve\""
 ```
+
+### add mfe-web-auth components and exposes it
+
+Bạn viết và expose các components giống như đang triển khai bình thường.
+
+Notes:
+
+- `main.tsx` không render bất kì components nào
+
+```ts
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>{null}</StrictMode>
+);
+```
+
+- update `vite.config.ts` để expose các components cần thiết
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import federation from '@originjs/vite-plugin-federation';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    federation({
+      name: 'mfe-web-auth',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './pages': './src/exposes/pages.tsx',
+        './hooks': './src/exposes/hooks.ts',
+        './features': './src/exposes/features.ts',
+      },
+      shared: ['react', 'react-dom', 'react-router'],
+    }),
+  ],
+  build: {
+    target: 'esnext',
+  },
+});
+```
+
+Xem example triển khai mfe-web-auth ở [đây](https://github.com/anhnt160190/mfe-example/pull/1)
