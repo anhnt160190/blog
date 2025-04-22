@@ -62,11 +62,11 @@ Update `package.json` `scripts`
 
 ### add mfe-web-auth components and exposes it
 
-Bạn viết và expose các components giống như đang triển khai bình thường.
+viết các components giống như đang triển khai bình thường.
 
 Notes:
 
-- `main.tsx` không render bất kì components nào
+- `main.tsx` render null
 
 ```ts
 import { StrictMode } from 'react';
@@ -106,3 +106,80 @@ export default defineConfig({
 ```
 
 Xem example triển khai mfe-web-auth ở [đây](https://github.com/anhnt160190/mfe-example/pull/1)
+
+### import/load remote-mfe into web-admin
+
+- update `vite.config.ts` để khai báo remote-mfe
+
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import federation from '@originjs/vite-plugin-federation';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    federation({
+      name: 'web-admin',
+      filename: 'remoteEntry.js',
+      remotes: {
+        'mfe-web-auth': 'http://localhost:4001/assets/remoteEntry.js',
+      },
+      shared: ['react', 'react-dom', 'react-router'],
+    }),
+  ],
+  server: {
+    port: 4000,
+  },
+  build: {
+    target: 'esnext',
+  },
+});
+```
+
+- khai báo remote types
+
+```ts
+# src/types/remote-modules.d.ts
+declare module 'mfe-web-auth/pages' {
+  export function LoginPage(): JSX.Element;
+}
+
+declare module 'mfe-web-auth/features' {
+  export function AuthProvider({
+    children,
+  }: {
+    children: React.ReactNode;
+  }): JSX.Element;
+
+  export function ProtectedRoute({
+    children,
+    permissions,
+  }: {
+    children: React.ReactNode;
+    permissions: string[];
+  }): JSX.Element;
+}
+```
+
+- import remote components/hooks vào host app
+
+```ts
+# src/pages/auth/Login.tsx
+import { lazy, Suspense } from 'react';
+
+const RemoteLoginPage = lazy(() =>
+  import('mfe-web-auth/pages').then(({ default: module }) => ({
+    default: module.LoginPage,
+  }))
+);
+
+export const LoginPage = () => {
+  return (
+    <Suspense fallback={null}>
+      <RemoteLoginPage />
+    </Suspense>
+  );
+};
+```
