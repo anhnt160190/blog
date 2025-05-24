@@ -40,6 +40,18 @@ Mỗi khi 1 dev push/merge 1 commit trên github. Github actions pipelines sẽ 
   + trigger sync argocd
   + argocd sync k8s manifest vào k8s cluster
 
-TODO: monitoring
+![monitoring](./monitoring.png)
 
-TODO: logging
+Tại cluster cho ops team. Mình deploy 1 cluster victoria metrics với basic-auth support.
+Với grafana dashboard sẽ lấy dữ liệu từ VM để hiển thị lên dashboard.
+
+Tại các cluster, mình triển khai vm-agent. Nhiệm vụ của nó là đẩy metrics vào cụm vm-cluster.
+Nhờ đó metrics được lưu trữ tập trung. Giúp mình dễ dàng triển khai dashboard và set up alert phù hợp. 
+
+![logging](./logging.png)
+
+Tương tự phần monitoring. Mình deploy 1 loki cluster ở ops-cluster.
+Các cluster mình deploy 1 agent làm nhiệm vụ collect k8s logs và push vào loki.
+Minio dùng làm storage cho loki.
+
+Admin có thể dùng Grafana để query logs.
